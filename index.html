@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="visual.css">
+    <title>BiblioLura</title>
+</head>
+
+<body>
+
+    <form action="#" id="formulario">
+        <h2>BiblioLura</h2>
+
+        <label for="titulo">Título do livro</label>
+        <input id="titulo" placeholder="Digite o nome do livro" required type="text" />
+
+        <label for="capa_livro">Capa do livro</label>
+        <input id="capa_livro" placeholder="Cole o link da imagem da capa do livro" required type="url" />
+
+        <label for="qtd_paginas">Quantidade de páginas</label>
+        <input id="qtd_paginas" placeholder="Digite quantidade de páginas do livro" required type="number" />
+
+        <label for="valor">Valor</label>
+        <input id="valor" placeholder="Digite o valor de custo do livro (R$)" required type="number" />
+
+        <label for="avaliacao">Avaliação</label>
+        <select id="avaliacao">
+            <option value="1">&#11088</option>
+            <option value="2">&#11088 &#11088</option>
+            <option value="3">&#11088 &#11088 &#11088</option>
+            <option value="4">&#11088 &#11088 &#11088 &#11088</option>
+            <option value="5">&#11088 &#11088 &#11088 &#11088 &#11088</option>
+        </select>
+
+        <label for="status">Status de leitura</label>
+        <select id="status">
+            <option value="sim">Lido</option>
+            <option value="nao">Não lido</option>
+        </select>
+
+        <input type="button" value="Adicionar livro" onclick="adicionaLivro()">
+    </form>
+
+    <table id="tabela_livros">
+        <thead>
+            <tr>
+                <td>Lidos</td>
+                <td>Não lidos</td>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h2>Resumo</h2>
+    <table>
+        <tr>
+            <td>Quantidade de páginas lidas</td>
+            <td id="paginas_lidas"></td>
+        </tr>
+        <tr>
+            <td>Quantidade de páginas a serem lidas</td>
+            <td id="paginas_desejadas"></td>
+        </tr>
+        <tr>
+            <td>Porcentagem de conclusão de leitura</td>
+            <td id="porcentagem_conclusao"></td>
+        </tr>
+    </table>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
