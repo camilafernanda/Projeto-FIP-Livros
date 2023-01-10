@@ -1,34 +1,60 @@
+let tituloLivro;
+let capaLivro;
+let statusLeitura;
+let tabela;
+let qtdPaginas;
+let totalPaginas = [];
+let vetorPaginasLidas = [];
+let vetorPaginasNaoLidas = [];
+
+function extraiValores() {
+    tituloLivro = document.querySelector('#titulo');
+    capaLivro = document.querySelector('#capa_livro');
+    statusLeitura = document.querySelector('#status');
+    tabela = document.querySelector('#tabela_livros');
+    qtdPaginas = document.querySelector('#qtd_paginas');
+}
+
 function adicionaLivro() {
-    let tituloLivro = document.querySelector('#titulo').value;
-    let capaLivro = document.querySelector('#capa_livro').value;
-    let statusLeitura = document.querySelector('#status').value;
-  
-    let tabela = document.querySelector('#tabela_livros');
+    
     let linha = tabela.insertRow();
     let cellLivroLido = linha.insertCell();
     let cellLivroNaoLido = linha.insertCell(1);
-    let novoLivro = "<img src=" + capaLivro + ">" + "<br>" + tituloLivro;
- 
-    if (statusLeitura == 'sim') {
-        cellLivroLido.innerHTML = novoLivro +
-        "<br><button style='visual.css' onclick='deletaLivro(this)'>Delete</button>";
-    } else {
-        cellLivroNaoLido.innerHTML = novoLivro +
-        "<br> <button style='visual.css' onclick='deletaLivro(this)'>Delete</button> <button style='visual.css' id='lido'>Lido</button>";
-    } 
 
-    let botaoLido = document.getElementById('lido');
-    botaoLido.addEventListener('click', () => {
+    // Aqui eu tentei fazer a imagem com o Image e o botão de delete com createElement tb, mas aí eu deveria usar 3 appendChild em uma célula da tabela e, pelo o que pesquisei, não tem como.
+    // let novoLivro = new Image(100, 200);
+    // novoLivro.src = capaLivro.value;
+    let novoLivro = "<img src=" + capaLivro.value + ">" + "<br>" + tituloLivro.value;
+ 
+    if (statusLeitura.value == 'sim') {
+        cellLivroLido.innerHTML = novoLivro +
+        "<br><button onclick='deletaLivro(this)'>Delete</button>";
+
+        vetorPaginasLidas.push(Number(qtdPaginas.value));
+    } else {
+        let botaoLido = document.createElement("button");
+        botaoLido.id = "lido";
+        botaoLido.innerHTML = "Lido";
+        cellLivroNaoLido.innerHTML = novoLivro +
+        "<br> <button onclick='deletaLivro(this)'>Delete</button>";
+        cellLivroNaoLido.appendChild(botaoLido); 
+
+        botaoLido.addEventListener('click', () => {
         marcarComoLido(novoLivro, cellLivroLido)
         cellLivroNaoLido.remove();
-    })
+        })
 
-    contaPaginas(statusLeitura);
+        vetorPaginasNaoLidas.push(Number(qtdPaginas.value));
+    } 
+
+    contaPaginas(vetorPaginasLidas, vetorPaginasNaoLidas);
 
 }
 
 function deletaLivro(livroAdeletar) {
     livroAdeletar.parentElement.remove();
+    // Parei aqui: fazendo a contagem de páginas diminuir assim que algum livro for deletado
+    console.log(totalPaginas);
 }
 
 function marcarComoLido(novoLivro, cellLivroLido) {
@@ -36,39 +62,40 @@ function marcarComoLido(novoLivro, cellLivroLido) {
         "<br><button style='visual.css' onclick='deletaLivro(this)'>Delete</button>";
 }
 
-function contaPaginas(statusLeitura) {
-    // let qtdPaginas = document.querySelector('#qtd_paginas').value;
+function contaPaginas(vetorPaginasLidas, vetorPaginasNaoLidas) {
+    
+    let paginasLidas = 0;
+    let paginasNaoLidas = 0;
+    
 
-    // let totalPaginas = [];
-    // let vetorPaginasLidas = [];
-    // let vetorPaginasNaoLidas = [];
+    for(let i=0; i<vetorPaginasLidas.length; i++) {
+        paginasLidas += vetorPaginasLidas[i];
+    }
 
-    // totalPaginas.push(qtdPaginas);
-    // paginasLidas = 0;
-    // paginasNaoLidas = 0;
+    for(let i=0; i<vetorPaginasNaoLidas.length; i++) {
+        paginasNaoLidas += vetorPaginasNaoLidas[i];
+    }
 
-    // for(let i=0; i<totalPaginas.length; i++) {
-    //     if(statusLeitura == 'sim') {
-    //         vetorPaginasNaoLidas[i] = 0;
-    //         vetorPaginasLidas.push(qtdPaginas);
-    //         paginasLidas += vetorPaginasLidas[i];
-         
-    //     } else {
-    //         vetorPaginasLidas[i] = 0;
-    //         vetorPaginasNaoLidas.push(qtdPaginas);
-    //         paginasNaoLidas += vetorPaginasNaoLidas[i];           
-    //     }
-    // }
-    // montarTabelaResumo(paginasLidas, paginasNaoLidas);
+    totalPaginas.push(Number(qtdPaginas.value));
+    let valorTotalPaginas = 0;
+    
+    for(let i=0; i<totalPaginas.length; i++) {
+        valorTotalPaginas += totalPaginas[i];
+    } 
+
+    let percentConclusao = 0;
+    percentConclusao = (paginasLidas / valorTotalPaginas)*100;
+    
+    montarTabelaResumo(paginasLidas, paginasNaoLidas, percentConclusao);
 }
 
-function montarTabelaResumo(paginasLidas, paginasNaoLidas) {
-    // let elementoPaginasLidas = document.querySelector('#paginas_lidas');
-    // elementoPaginasLidas.textContent = paginasLidas;
+function montarTabelaResumo(paginasLidas, paginasNaoLidas, percentConclusao) {
+    let elementoPaginasLidas = document.querySelector('#paginas_lidas');
+    elementoPaginasLidas.textContent = paginasLidas + " páginas";
 
-    // let elementoPaginasNaoLidas = document.querySelector('#paginas_desejadas');
-    // elementoPaginasNaoLidas.textContent = paginasNaoLidas;
+    let elementoPaginasNaoLidas = document.querySelector('#paginas_desejadas');
+    elementoPaginasNaoLidas.textContent = paginasNaoLidas + " páginas";
 
-    // let percentConclusao = document.querySelector('#porcentagem_conclusao');
-    // resumoTotalMontante.textContent = percentConclusao + '%';
+    let elementoPercentConclusao = document.querySelector('#porcentagem_conclusao');
+    elementoPercentConclusao.textContent = percentConclusao + '%';
 }
