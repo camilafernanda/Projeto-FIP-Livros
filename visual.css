@@ -1,0 +1,160 @@
+input,
+button {
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+}
+
+input[type=button] {
+    font-family: arial;
+    font-weight: bold;
+    color: white !important;
+    font-size: 16px;
+    box-shadow: var(--azul-claro);
+    padding: 13px 36px;
+    border-radius: 16px;
+    background: var(--azul-medio);
+    margin-top: 36px;
+    cursor: pointer;
+    transition: 0.3;
+}
+
+input[type=button]:hover {
+    color: var(--azul-claro) !important;
+    background: var(--azul-escuro);
+}
+
+*,
+*::before,
+*::after {
+    --azul-escuro: #154580;
+    --azul-medio: #3970BE;
+    --azul-claro: #E5F1FF;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    background-color: var(--azul-claro);
+    background-image: url("https://i.imgur.com/7A8vYG5.png");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    font-size: 18px;
+    color: white;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+p {
+    color: var(--azul-escuro);
+    font-size: 1.6em;
+}
+
+form,
+table {
+    margin: 3em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: initial;
+}
+
+h2 {
+    color: var(--azul-medio);
+    font-weight: bold;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+form label {
+    line-height: 2;
+    padding: 0 0 .1em 1em;
+    font-weight: 700;
+    color: var(--azul-medio);
+}
+
+form input {
+    min-width: 30vw;
+    border-radius: 24px;
+    display: block;
+    color: black;
+    padding: 1em
+}
+
+table {
+    line-height: 1.5;
+    color: white;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    font-size: 1.4em;
+    margin-top: 0;
+}
+
+td {
+    min-width: 15vw;
+    border-bottom: 1px solid var(--azul-escuro);
+    padding: 5px;
+}
+
+td:not(:last-child) {
+    text-align: left;
+}
+
+td:last-child {
+    text-align: right;
+}
+
+tr:last-child td {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5em;
+    color: var(--azul-medio);
+    border-bottom: none;
+}
+
+select {
+    word-wrap: normal;
+    border: none;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    min-width: 30vw;
+    font-size: 16px;
+    padding: 13px 36px;
+    border-radius: 24px;
+    margin-top: 10px;
+}
+
+select:hover {
+    color: black !important;
+    background: var(--azul-claro);
+}
+
+fieldset {
+    border: 5px solid var(--azul-escuro);
+}
+
+legend {
+    padding: 10px;
+    background: var(--azul-escuro);
+    color: var(--azul-claro);
+}
+
+button {
+    font-family: arial;
+    font-weight: bold;
+    color: white !important;
+    font-size: 16px;
+    box-shadow: var(--azul-claro);
+    padding: 13px 36px;
+    border-radius: 16px;
+    background: var(--azul-medio);
+    margin-top: 36px;
+    cursor: pointer;
+    transition: 0.3;
+}
