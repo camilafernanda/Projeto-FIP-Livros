@@ -65,6 +65,15 @@ function exibeMetaDiaria() {
     newpopupWindow.document.write ("Que bom que você voltou! Hoje sua meta de leitura é de " + metaDiaria + " páginas");
 }
 
+function contaTempo() {
+    var now = new Date();
+    var msAteDezHoras = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0, 0, 0) - now;
+    if (msAteDezHoras < 0) {
+        msAteDezHoras += 86400000; // já passou das 10 da manhã, começa de novo.
+    }
+    setTimeout(function(){exibeMetaDiaria()}, msAteDezHoras);
+}
+
 function criaDiv(tituloLivro) {
     let elementoDiv = document.createElement("div");
     elementoDiv.id = "div_titulo";
