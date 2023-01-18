@@ -3,16 +3,19 @@ let capaLivro;
 let statusLeitura;
 let tabela;
 let qtdPaginas;
+let paginaAtual;
+let maxMeta;
 let totalPaginas = [];
 let vetorPaginasLidas = [];
 let vetorPaginasNaoLidas = [];
 
-function extraiValoresAoCarregarAPágina() {
+function extraiValoresAoCarregarAPagina() {
     tituloLivro = document.querySelector('#titulo');
     capaLivro = document.querySelector('#capa_livro');
     statusLeitura = document.querySelector('#status');
     tabela = document.querySelector('#tabela_livros');
     qtdPaginas = document.querySelector('#qtd_paginas');
+    maxMeta = document.querySelector('#meta_max');
 }
 
 function adicionaLivro() {
@@ -41,13 +44,25 @@ function adicionaLivro() {
         cellLivroNaoLido.append(elementoDiv);
         cellLivroNaoLido.appendChild(botaoDelete);
         cellLivroNaoLido.appendChild(botaoLido);
+        cellLivroNaoLido.append(elementoDiv);
+        cellLivroNaoLido.appendChild(criaInputPaginas());
         //cellLivroNaoLido.innerHTML = tituloLivro.value + botaoDelete;
 
         vetorPaginasNaoLidas.push(Number(qtdPaginas.value));
     } 
-
+    
+    exibeMetaDiaria();
     contaPaginas();
 
+}
+
+
+
+function exibeMetaDiaria() {
+    let metaDiaria = parseInt(Math.random() * maxMeta.value);
+
+    let newpopupWindow = window.open ('', 'pagina', "width=250 height=250");
+    newpopupWindow.document.write ("Que bom que você voltou! Hoje sua meta de leitura é de " + metaDiaria + " páginas");
 }
 
 function criaDiv(tituloLivro) {
@@ -81,33 +96,47 @@ function criaBotaoLido(novoLivro, cellLivroLido, cellLivroNaoLido, elementoDiv, 
     botaoLido.id = "lido";
     botaoLido.innerHTML = "Lido";
     botaoLido.addEventListener('click', function() {
-    marcarComoLido(novoLivro, cellLivroLido, elementoDiv, botaoDelete);
-    cellLivroNaoLido.remove();
-    });
+        marcarComoLido(novoLivro, cellLivroLido, elementoDiv, botaoDelete);
+        cellLivroNaoLido.remove();
+        });
     return botaoLido;
+}
+
+function criaInputPaginas() {
+    let inputPaginas = document.createElement("input");
+    inputPaginas.id = "input_paginas";
+    inputPaginas.type = "range";
+    inputPaginas.min = "0";
+    inputPaginas.max = qtdPaginas.value;
+    inputPaginas.addEventListener('change', function(evento){
+        paginaAtual = evento.target.value;
+        console.log(paginaAtual);
+    })
+    return inputPaginas;
 }
 
 function deletaLivroLido(livroAdeletar) {
     livroAdeletar.parentElement.remove();
-    //vetorPaginasLidas.pop;
-    paginas = contaPaginas();
-    paginasLidas = paginas[0];
-    for(let i=0; i<vetorPaginasLidas.length; i++) {
-        paginasLidas -= vetorPaginasLidas[i];
-    }
-    console.log(paginasLidas);
+    vetorPaginasLidas.pop;
+    contaPaginas();
+    // paginas = contaPaginas();
+    // paginasLidas = paginas[0];
+    // for(let i=0; i<vetorPaginasLidas.length; i++) {
+    //     paginasLidas -= vetorPaginasLidas[i];
+    // }
+    // console.log(paginasLidas);
     console.log(vetorPaginasLidas);
 }
 
 function deletaLivroNaoLido(livroAdeletar) {
     livroAdeletar.parentElement.remove();
-    //vetorPaginasNaoLidas.pop;
-    //contaPaginas();
-    for(let i=0; i<vetorPaginasNaoLidas.length; i++) {
-        paginasNaoLidas -= vetorPaginasNaoLidas[i];
-    }
-    //console.log(paginasNaoLidas);
-    //console.log(vetorPaginasNaoLidas);
+    vetorPaginasNaoLidas.pop;
+    contaPaginas();
+    // for(let i=0; i<vetorPaginasNaoLidas.length; i++) {
+    //     paginasNaoLidas -= vetorPaginasNaoLidas[i];
+    // }
+    // console.log(paginasNaoLidas);
+    console.log(vetorPaginasNaoLidas);
 }
 
 function marcarComoLido(novoLivro, cellLivroLido, elementoDiv, botaoDelete) {
@@ -139,7 +168,7 @@ function contaPaginas() {
     
     montarTabelaResumo(paginasLidas, paginasNaoLidas, percentConclusao);
 
-    return [paginasLidas, paginasNaoLidas];
+    //return [paginasLidas, paginasNaoLidas];
 }
 
 function montarTabelaResumo(paginasLidas, paginasNaoLidas, percentConclusao) {
