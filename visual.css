@@ -52,7 +52,7 @@
     color: aliceblue;
     margin-top: 10px;
 }
-.biblioteca section section{
+.biblioteca-livros{
     background-color: rgba(133, 133, 133, 0.5);
     padding: 1vw;
     display: flex;
@@ -66,4 +66,9 @@
     padding: 1vw;
     flex-grow: 1;
     max-width: 300px;
+}
+
+.livro  div{
+    display: flex;
+    flex-direction: row;
 }
