@@ -1,7 +1,14 @@
+:root{
+    --cor-primaria:#154580;
+    --cor-secundaria:#00E6AB;
+    --cor-destaque:#FF7FAB;
+    --cor-destaque-2:#FFBA05;
+}
 input,
 button {
     border: none;
-    color: inherit;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-secundaria);
     font-size: inherit;
     font-weight: inherit;
     font-family: inherit;
