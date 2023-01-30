@@ -12,20 +12,46 @@
 <body onload="extraiValoresAoCarregarAPagina()">
 
     <header class="cabecalho">
-        <img src="img/buksi-logo_preto 1.png"/>
+        <img src="img/buski-logo-verde 1.png"/>
     </header>
     <main>
         <article class="resumo">
             <header>
-                <p>Olá, Mila</p>
-                <p>Veja aqui seus hábitos de leitura e metas de hoje</p>    
+                <div>
+                    <h1 class="bold ">Olá, Mila</h1>
+                    <p class="esm">Veja aqui seus hábitos de leitura e metas de hoje</p>
+                </div>
+                <div>
+                    <p class="md">Você já leu <mark>10</mark> páginas hoje</p> 
+                    <p class="md">Você ainda tem <mark>30</mark> páginas pela frente</p>
+                </div>
+                    <p class="mark lg bold">Você já atingiu <mark class="elg">50%</mark> da sua meta</p>     
+                </header>
+                
+            <section>
+                <img src="img/ilustração_lendo 1.png"/>
+            </section>
+        </article>
+        <article class="formulario">
+            <header>
+                <h1>Adicione um livro a sua biblioteca</h1>
             </header>
             
-            <section>
-                <h1>Adicione um livro a sua bílbioteca</h1>
-                <p>Seja lido, em leitura ou na fila</p>
-                <img src="img/add_circle_FILL0_wght400_GRAD0_opsz48 1.svg"/>
-            </section>
+            <form>
+                <input type="text" placeholder="Nome do Livro"/>
+                <input type="text" placeholder="Nome do Autor"/>
+                <fieldset>
+                    <label for="paginas_lidas">Páginas Lidas</label>
+                    <br/>
+                    <input type="number" id="paginas_lidas"/>
+                </fieldset>
+                <fieldset>
+                    <label for="total_paginas">Total de páginas</label>
+                    <br/>
+                    <input type="number" id="total_paginas"/>
+                </fieldset>
+                <button type="submit">Adicionar livro</button>
+            </form>
         </article>
         <section class="biblioteca">
 
@@ -39,24 +65,15 @@
                 <section class="biblioteca-livros">
                  
                  <article class="livro">
+                    <img src="https://picsum.photos/130/200"/>
                     <h1>Título</h1> 
-                    <div>
-                        <img src="https://picsum.photos/130/200"/>
-                        <section>
-                            <p>1200</p> <p>Total de páginas</p>
-                            <p>status de leitura</p>
-                            <button>Lendo</button>
-                            <button>Lido</button>
-                            <button>Fila</button>
-                            <p>Avaliação</p>
-                            <button>&#11088</button>
-                            <button>&#11088</button>
-                            <button>&#11088</button>
-                            <button>&#11088</button>
-                            <button>&#11088</button>
-                        </section>
-                    </div>
+                    <p>Do autor(a):Nome do autor</p>
+                    
+                    <input type="range"/>
+                    <p>86%</p>
+                            
                  </article>
+                 
                 </section>
             </section>
 
@@ -65,88 +82,22 @@
                 <section class="biblioteca-livros">
                  
                  <article class="livro">
+                    <img src="https://picsum.photos/130/200"/>
                     <h1>Título</h1> 
-                    <div>
-                        <img src="https://picsum.photos/130/200"/>
-                        <section>
-                            <p>1200</p> <p>Total de páginas</p>
-                            <p>status de leitura</p>
-                            <button>Lendo</button>
-                            <button>Lido</button>
-                            <button>Fila</button>
-                            <p>Avaliação</p>
-                            <button>&#11088</button>
-                            <button>&#11088</button>
-                            <button>&#11088</button>
-                            <button>&#11088</button>
-                            <button>&#11088</button>
-                        </section>
-                    </div>
+                    <p>Avaliação</p>
+                    <button>&#11088</button>
+                    <button>&#11088</button>
+                    <button>&#11088</button>
+                    <button>&#11088</button>
+                    <button>&#11088</button>
+                    <button>&#11088</button>
+                        
                  </article>
                 </section>
             </section>
         </section>
     </main>
-    <!-- <form action="#" id="formulario">
-        <h2>BiblioLura</h2>
-
-        <label for="titulo">Título do livro</label>
-        <input id="titulo" placeholder="Digite o nome do livro" required type="text" />
-
-        <label for="capa_livro">Capa do livro</label>
-        <input id="capa_livro" placeholder="Cole o link da imagem da capa do livro" required type="url" />
-
-        <label for="qtd_paginas">Quantidade de páginas</label>
-        <input id="qtd_paginas" placeholder="Digite quantidade de páginas do livro" required type="number" />
-
-        <label for="meta_max">Meta de leitura</label>
-        <input id="meta_max" placeholder="Digite o valor máximo de páginas para leitura diária" required type="number" />
-
-        <label for="avaliacao">Avaliação</label>
-        <select id="avaliacao">
-            <option value="1">&#11088</option>
-            <option value="2">&#11088 &#11088</option>
-            <option value="3">&#11088 &#11088 &#11088</option>
-            <option value="4">&#11088 &#11088 &#11088 &#11088</option>
-            <option value="5">&#11088 &#11088 &#11088 &#11088 &#11088</option>
-        </select>
-
-        <label for="status">Status de leitura</label>
-        <select id="status">
-            <option value="sim">Lido</option>
-            <option value="nao">Não lido</option>
-        </select>
-
-        <input type="button" value="Adicionar livro" onclick="adicionaLivro()">
-    </form>
-
-    <table id="tabela_livros">
-        <thead>
-            <tr>
-                <td>Lidos</td>
-                <td>Não lidos</td>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-
-    <h2>Resumo</h2>
-    <table>
-        <tr>
-            <td>Quantidade de páginas lidas</td>
-            <td id="paginas_lidas"></td>
-        </tr>
-        <tr>
-            <td>Quantidade de páginas a serem lidas</td>
-            <td id="paginas_desejadas"></td>
-        </tr>
-        <tr>
-            <td>Porcentagem de conclusão de leitura</td>
-            <td id="porcentagem_conclusao"></td>
-        </tr>
-    </table> -->
-
+   
    
 </body>
 

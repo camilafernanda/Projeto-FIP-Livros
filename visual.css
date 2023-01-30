@@ -1,44 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap');
 :root{
     --cor-primaria:#154580;
+    --cor-primaria-realce:#002D65;
     --cor-secundaria:#00E6AB;
     --cor-destaque:#FF7FAB;
     --cor-destaque-2:#FFBA05;
+    --cor-fundo:#362A18;
 }
 
 *{
     padding: 0;
     margin: 0;
+    
 }
 
+p,h1,mark,input,label,button{
+    font-family: 'Raleway', sans-serif;
+}
+
+button{
+    padding: 1vw 3vw;
+    background-color: white;
+    color: var(--cor-primaria);
+    font-size: 1.56rem;
+    border: none;
+    border-bottom: 2px solid #00E6AB;
+
+}
+button:hover{
+    background-color: var(--cor-secundaria);
+}
+
+button::before{
+    content: url(img/Vector.svg);
+    display: inline-block;
+    margin-right: 8px;
+    transform: translateY(10%);
+
+}
+
+label{
+    color: white;
+}
+
+input{
+   
+    margin-top: 3vw;
+    padding: 2vh;
+    border: none;
+    border-bottom: 2px solid #00E6AB;
+}
+input:hover, input:focus{
+    border-bottom: 6px solid #00E6AB;
+}
+
+input[type="text"]{
+    display: block;
+    width: 100%;
+    
+}
+
+fieldset{
+    display: inline;
+    border: none;
+    margin-top: 3vw;
+}
+
+fieldset input{
+    margin-top: 8px;
+}
+
+.esm{
+    font-size: 1;
+}
+.sm{
+    font-size: 1.56rem;
+}
+.md{
+    font-size: 1.93rem;
+}
+.lg{
+    font-size: 2.43rem;
+}
+.elg{
+    font-size: 3.06rem;
+}
+
+.mark{
+    color: var(--cor-secundaria);
+}
+
+.bold{
+    font-weight: 800;
+}
 .cabecalho{
-    background-color: rgba(133, 133, 133, 0.25);
+    background-color: var(--cor-primaria);
     padding: 1vw;
-    margin-bottom: 50px;
 }
 
 .cabecalho img{
-    width: 20vw;
+    width: 10vw;
+    margin-left: 6vw;
 }
 
+main{
+    padding: 0 7vw;
+    background-color: var(--cor-fundo);
+}
+mark{
+    color: var(--cor-secundaria);
+    font-size: 2.43rem;
+    background-color: transparent;
+}
 .resumo{ 
-    background-color: rgba(133, 133, 133, 0.25);
-    margin: 0 5vw;
-    padding: 1vw;
+    color: white;
+    padding-top: 3.5vw;
     display: flex;
     flex-direction: row;
-    margin-bottom: 50px;
+    
 }
 .resumo header{
     flex-grow: 1;
 }
+
+.resumo header div{
+    margin-bottom: 3.5vw;
+}
 .resumo section{
     flex-grow: 1;
 }
+
 .resumo section img{
-    width: 15%;
-    margin-top: 20px;
+    width: 28vw;
 }
 
+.formulario{
+    background-color: var(--cor-primaria-realce);
+   
+}
+
+.formulario header{
+    background-color: var(--cor-primaria);
+    text-align: center;
+    padding: 1.5vw;
+
+}
+
+.formulario header h1{
+    color: var(--cor-primaria);
+    background-color: var(--cor-secundaria);
+    padding: 1vw;
+    width: 50%;
+    margin: auto auto;
+}
+.formulario header h1::before{
+    content: url(img/Vector.svg);
+    display: inline-block;
+    margin-right: 8px;
+    transform: translateY(10%);
+}
+
+.formulario form{ 
+    padding: 0 7vw 3.5vw 7vw ;
+    
+}
 .biblioteca{
     
 }
