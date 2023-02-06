@@ -238,15 +238,21 @@ mark{
 }
 
 .biblioteca > section{
-    border-top: #FF7FAB .5px solid;
+    border-top: var(--cor-destaque) .5px solid;
     overflow:auto;
 }
 
+.biblioteca> section:last-of-type{
+    border-top: var(--cor-destaque-2) .5px solid;
+}
 .biblioteca section > h2{
     padding: 1vw;
     background-color: transparent;
     color: var(--cor-destaque);
     margin-top: 10px;
+}
+.biblioteca section:last-child > h2{
+    color: var(--cor-destaque-2);
 }
 
 
