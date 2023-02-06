@@ -69,7 +69,9 @@ function adicionaLivroNaLista(livro, lista) {
     elementoImagem.src = livro.capa;
     elementoTitulo.innerText = livro.titulo;
     elementoAutor.innerText = livro.autor;
-    elementoBotaoDelete.innerText = "Deletar";
+    elementoBotaoDelete.innerText = "X Deletar";
+    elementoBotaoDelete.className = "botao-simples-texto";
+    elementoArticle.className = "livro";
 
     elementoArticle.appendChild(elementoImagem);
     elementoArticle.appendChild(elementoTitulo);
@@ -79,7 +81,8 @@ function adicionaLivroNaLista(livro, lista) {
     if (!livro.lido) {
         let inputLeitura = document.createElement("input");
         inputLeitura.type = "range";
-        inputLeitura.min = livro.paginaAtual;
+        inputLeitura.min = 0;
+        inputLeitura.value = livro.paginasLidas;
         inputLeitura.max = livro.paginas;
         elementoArticle.appendChild(inputLeitura);
     }
