@@ -85,10 +85,41 @@ function adicionaLivroNaLista(livro, lista) {
         inputLeitura.value = livro.paginasLidas;
         inputLeitura.max = livro.paginas;
         elementoArticle.appendChild(inputLeitura);
+        marcarComoLido(inputLeitura, livro, elementoArticle);
     }
 
     lista.appendChild(elementoArticle);
+    deletaLivro(elementoBotaoDelete, livro, elementoArticle, lista);
+    
+}
 
+function marcarComoLido(inputLeitura, livro, elementoArticle) {
+
+    inputLeitura.addEventListener("change", function (evento) {
+        paginaAtual = evento.target.value;
+        livro.paginasLidas = paginaAtual;
+        contaPaginas();
+
+        if (paginaAtual == livro.paginas) {
+            livro.lido = true;
+
+            livrosLidos.appendChild(elementoArticle);
+            livrosNaoLidos.removeChild(elementoArticle);
+        }
+
+    });
+    
+}
+
+function deletaLivro(elementoBotaoDelete, livro, elementoArticle, lista){
+
+    elementoBotaoDelete.addEventListener("click", function(){
+        lista.removeChild(elementoArticle);
+        let posicao = todosOsLivros.indexOf(livro);
+        todosOsLivros.splice(posicao, 1);
+        contaPaginas();
+    });
+    
 }
 
 function contaPaginas() {
@@ -120,18 +151,6 @@ function montarTabelaResumo(totalPaginasLidas, paginasFaltantes, porcentagem) {
     let elementoPorcentagem = document.querySelector("#campo_porcentagem");
     elementoPorcentagem.innerHTML = porcentagem.toFixed(2) + "%";
 }
-
-// function marcarComoLido(inputLeitura, livro) {
-    
-//     inputLeitura.addEventListener('change', function (evento) {
-//         paginaAtual = evento.target.value;
-//         if (paginasAtual == totalPaginas) {
-//             livro.lido = true;
-//         }
-//     })
-//     return inputLeitura;
-// }
-
 
 
 // function exibeMetaDiaria() {
