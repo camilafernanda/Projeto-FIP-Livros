@@ -65,6 +65,8 @@ function adicionaLivroNaLista(livro, lista) {
     let elementoTitulo = document.createElement("h1");
     let elementoAutor = document.createElement("p");
     let elementoBotaoDelete = document.createElement("button");
+    let elementoSpanEstrelas = document.createElement("span");
+    // let elementoInputEstrelas = document.createElement("input");
 
     elementoImagem.src = livro.capa;
     elementoTitulo.innerText = livro.titulo;
@@ -73,10 +75,16 @@ function adicionaLivroNaLista(livro, lista) {
     elementoBotaoDelete.className = "botao-simples-texto";
     elementoArticle.className = "livro";
 
+    elementoSpanEstrelas.className = "container";
+    // elementoInputEstrelas.type = "range";
+    // elementoInputEstrelas.min = 0;
+    // elementoInputEstrelas.max = 5;
+    // elementoInputEstrelas.step = 1;
+
     elementoArticle.appendChild(elementoImagem);
     elementoArticle.appendChild(elementoTitulo);
     elementoArticle.appendChild(elementoAutor);
-    elementoArticle.appendChild(elementoBotaoDelete);
+    // elementoArticle.appendChild(elementoSpanEstrelas).appendChild(elementoInputEstrelas);
 
     if (!livro.lido) {
         let inputLeitura = document.createElement("input");
@@ -85,15 +93,17 @@ function adicionaLivroNaLista(livro, lista) {
         inputLeitura.value = livro.paginasLidas;
         inputLeitura.max = livro.paginas;
         elementoArticle.appendChild(inputLeitura);
-        marcarComoLido(inputLeitura, livro, elementoArticle);
+        marcarComoLido(inputLeitura, livro, elementoArticle, elementoBotaoDelete);
     }
 
-    lista.appendChild(elementoArticle);
+    elementoArticle.appendChild(elementoBotaoDelete);
     deletaLivro(elementoBotaoDelete, livro, elementoArticle, lista);
+
+    lista.appendChild(elementoArticle);
     
 }
 
-function marcarComoLido(inputLeitura, livro, elementoArticle) {
+function marcarComoLido(inputLeitura, livro, elementoArticle, elementoBotaoDelete) {
 
     inputLeitura.addEventListener("change", function (evento) {
         paginaAtual = evento.target.value;
@@ -103,8 +113,12 @@ function marcarComoLido(inputLeitura, livro, elementoArticle) {
         if (paginaAtual == livro.paginas) {
             livro.lido = true;
 
-            livrosLidos.appendChild(elementoArticle);
             livrosNaoLidos.removeChild(elementoArticle);
+            elementoArticle.querySelector("input").remove();
+            livrosLidos.appendChild(elementoArticle);
+
+            deletaLivro(elementoBotaoDelete, livro, elementoArticle, livrosLidos);
+            
         }
 
     });
